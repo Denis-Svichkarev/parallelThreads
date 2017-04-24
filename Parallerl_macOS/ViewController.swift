@@ -13,6 +13,7 @@ class ViewController: NSViewController {
     @IBOutlet var taskTextView: NSTextView!
     @IBOutlet var consoleTextView: NSTextView!
     @IBOutlet var sourceGraphTextView: NSTextView!
+    @IBOutlet weak var threadCountTextField: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +36,25 @@ class ViewController: NSViewController {
         
         sourceGraphTextView.string = weightedGraph.printWeightedGraph()
         
-        let threadsCount = 2
-        var i = 0
-        
-        let startDate = Date()
+        if let count = Int(threadCountTextField.stringValue) {
             
-        weightedGraph.prima(theadsCount: 2) { result in
-            i += 1
+            let threadsCount = count
+            var i = 0
             
-            if i == threadsCount {
-                let interval = String(format: "%.5f", -startDate.timeIntervalSinceNow)
-                self.consoleTextView.string?.append("Time: " + interval + "\n")
+            let startDate = Date()
+            
+            weightedGraph.prima(theadsCount: threadsCount) { result in
+                i += 1
+                self.consoleTextView.string?.append(result.0 + "\n")
+                
+                if i == threadsCount {
+                    let interval = String(format: "%.5f", -startDate.timeIntervalSinceNow)
+                    self.consoleTextView.string?.append("Time: " + interval + "\n")
+                }
             }
+            
+            print("\n")
         }
-        
-        print("")
     }
 }
 

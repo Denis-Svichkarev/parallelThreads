@@ -149,23 +149,21 @@ extension WeightedGraph {
         markedVertices = [Vertex]()
         markedEdges = [WeightedEdge]()
         
-        let concurrentQueue = DispatchQueue(label: "queue1", attributes: .concurrent)
-        concurrentQueue.async {
-            
-            self.runPrima(weightedEdge: self.weightedEdges.first!, threadIndex: 1)
-            
-            DispatchQueue.main.async {
-                completion("1 done", 1)
-            }
+        if self.weightedEdges.count < theadsCount {
+            completion("Error", 0)
+            return
         }
         
-        let concurrentQueue2 = DispatchQueue(label: "queue2", attributes: .concurrent)
-        concurrentQueue2.async {
+        for i in 0..<theadsCount {
             
-            self.runPrima(weightedEdge: self.weightedEdges.last!, threadIndex: 2)
-            
-            DispatchQueue.main.async {
-                completion("2 done", 2)
+            let concurrentQueue = DispatchQueue(label: "queue\(i)", attributes: .concurrent)
+            concurrentQueue.async {
+                
+                self.runPrima(weightedEdge: self.weightedEdges[i], threadIndex: i + 1)
+                
+                DispatchQueue.main.async {
+                    completion("\(i + 1) done", i + 1)
+                }
             }
         }
     }

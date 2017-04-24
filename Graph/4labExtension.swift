@@ -144,13 +144,14 @@ extension WeightedGraph {
     
     // MARK: - 2 Task
     
-    func prima(theadsCount: Int, completion: @escaping (_ result: String, _ threadIndex: Int) -> Void) {
+    func prima(theadsCount: Int, completion: @escaping (_ result: String, _ threadIndex: Int, _ edges: [String]) -> Void) {
         
         markedVertices = [Vertex]()
         markedEdges = [WeightedEdge]()
         
         if self.weightedEdges.count < theadsCount {
-            completion("Error", 0)
+            let edges = [String]()
+            completion("Error", 0, edges)
             return
         }
         
@@ -159,27 +160,29 @@ extension WeightedGraph {
             let concurrentQueue = DispatchQueue(label: "queue\(i)", attributes: .concurrent)
             concurrentQueue.async {
                 
-                self.runPrima(weightedEdge: self.weightedEdges[i], threadIndex: i + 1)
-                
-                DispatchQueue.main.async {
-                    completion("\(i + 1) done", i + 1)
-                }
+                self.runPrima(weightedEdge: self.weightedEdges[i], threadIndex: i + 1, completion: { edges in
+                    
+                    DispatchQueue.main.async {
+                        completion("\(i + 1) done", i + 1, edges)
+                    }
+                })
             }
         }
     }
     
-    func runPrima(weightedEdge: WeightedEdge, threadIndex: Int) {
+    func runPrima(weightedEdge: WeightedEdge, threadIndex: Int, completion: @escaping (_ edges: [String]) -> Void) {
         
         var markedVerticesInThread = [Vertex]()
         markedVerticesInThread.append(weightedEdge.vertex1)
         
         var minEdge: WeightedEdge?
+        var markedEdgesInThread = [String]()
         
         while (true) {
             
             var minWeight = 10000
             
-            DispatchQueue.main.sync {
+            //DispatchQueue.main.sync {
                 
                 for v in markedVerticesInThread {
                     for e in self.weightedEdges {
@@ -218,11 +221,11 @@ extension WeightedGraph {
                         }
                     }
                 }
-            }
+            //}
             
             if let minEdge = minEdge {
                 
-                DispatchQueue.main.sync {
+                //DispatchQueue.main.sync {
                     markedEdges.append(minEdge)
                     
                     if !hasVertex(vertices: markedVerticesInThread, vertex: minEdge.vertex1) {
@@ -233,8 +236,9 @@ extension WeightedGraph {
                         markedVerticesInThread.append(minEdge.vertex2)
                     }
                     
-                    print("Поток: \(threadIndex) Ребро: " + minEdge.vertex1.value + " - " + minEdge.vertex2.value)
-                    
+                    //print("Поток: \(threadIndex) Ребро: " + minEdge.vertex1.value + " - " + minEdge.vertex2.value)
+                    markedEdgesInThread.append("Поток: \(threadIndex) Ребро: " + minEdge.vertex1.value + " - " + minEdge.vertex2.value + "\n")
+                
                     if !self.hasVertex(vertices: self.markedVertices, vertex: minEdge.vertex1) {
                         self.markedVertices.append(minEdge.vertex1)
                     }
@@ -242,10 +246,11 @@ extension WeightedGraph {
                     if !self.hasVertex(vertices: self.markedVertices, vertex: minEdge.vertex2) {
                         self.markedVertices.append(minEdge.vertex2)
                     }
-                }
+                //}
             }
     
             if markedVertices.count >= vertices.count {
+                completion(markedEdgesInThread)
                 break
             }
         }

@@ -47,6 +47,16 @@ class ViewController: NSViewController {
                 i += 1
                 self.consoleTextView.string?.append(result.0 + "\n")
                 
+                let edges = result.2
+                
+                self.consoleTextView.string?.append("\n")
+                
+                for e in edges {
+                    self.consoleTextView.string?.append(e)
+                }
+                
+                self.consoleTextView.string?.append("\n")
+                
                 if i == threadsCount {
                     let interval = String(format: "%.5f", -startDate.timeIntervalSinceNow)
                     self.consoleTextView.string?.append("Time: " + interval + "\n")

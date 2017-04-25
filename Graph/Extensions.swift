@@ -15,3 +15,9 @@ extension String {
         return result
     }
 }
+
+extension Array {
+    func containsElement<T>(obj: T) -> Bool where T : Equatable, T : Equatable {
+        return self.filter({$0 as? T == obj}).count > 0
+    }
+}

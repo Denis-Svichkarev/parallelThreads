@@ -208,6 +208,10 @@ extension WeightedGraph {
                     
                     if existInMarked { continue }
                     
+//                    if markedEdges.containsElement(obj: e) {
+//                        continue
+//                    }
+                    
                     if e.vertex1.value == v.value {
                         if !self.hasVertex(vertices: markedVerticesInThread, vertex: e.vertex2) {
                             if e.weight < minWeight { minWeight = e.weight; minEdge = e }
@@ -343,7 +347,7 @@ extension WeightedGraph {
     }
     
     func load(theadsCount: Int) {
-        for _ in 0..<(100000 / theadsCount) {
+        for _ in 0..<(50000 / theadsCount) {
             for i in 0..<100 {
                 for j in 0..<100 {
                     let a = i * j

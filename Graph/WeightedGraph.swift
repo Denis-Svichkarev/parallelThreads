@@ -8,13 +8,19 @@
 
 import Foundation
 
-struct WeightedEdge {
+struct WeightedEdge: Equatable {
     
     var vertex1: Vertex
     var vertex2: Vertex
     
     var weight: Int
 }
+
+func ==(lhs: WeightedEdge, rhs: WeightedEdge) -> Bool {
+    return (lhs.vertex1.value == rhs.vertex1.value && lhs.vertex2.value == rhs.vertex2.value) ||
+        (lhs.vertex1.value == rhs.vertex2.value && lhs.vertex2.value == rhs.vertex1.value)
+}
+
 
 class WeightedGraph: OrientedGraph {
     

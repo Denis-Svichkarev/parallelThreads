@@ -735,17 +735,17 @@
                                 </scroller>
                             </scrollView>
                             <scrollView wantsLayer="YES" fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKl-af-cJt">
-                                <rect key="frame" x="20" y="13" width="502" height="285"/>
+                                <rect key="frame" x="20" y="13" width="271" height="285"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <clipView key="contentView" ambiguous="YES" id="LbY-XS-90p">
-                                    <rect key="frame" x="1" y="1" width="500" height="283"/>
+                                    <rect key="frame" x="1" y="1" width="269" height="283"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Aqe-vW-rm9">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="283"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="269" height="283"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="500" height="283"/>
+                                            <size key="minSize" width="269" height="283"/>
                                             <size key="maxSize" width="518" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -757,12 +757,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="VvH-Sx-Hlj">
-                                    <rect key="frame" x="485" y="1" width="16" height="283"/>
+                                    <rect key="frame" x="254" y="1" width="16" height="283"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DUW-Qp-tom">
-                                <rect key="frame" x="573" y="400" width="112" height="32"/>
+                                <rect key="frame" x="332" y="13" width="183" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Рассчитать" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c1O-sE-Q0H">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -773,7 +773,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bq8-fb-nz8">
-                                <rect key="frame" x="578" y="318" width="103" height="17"/>
+                                <rect key="frame" x="580" y="411" width="103" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Исходный граф" id="rVW-uU-b6F">
                                     <font key="font" metaFont="system"/>
@@ -782,17 +782,17 @@
                                 </textFieldCell>
                             </textField>
                             <scrollView wantsLayer="YES" fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TkU-Tg-Asa">
-                                <rect key="frame" x="546" y="13" width="170" height="285"/>
+                                <rect key="frame" x="546" y="13" width="170" height="375"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <clipView key="contentView" ambiguous="YES" id="DMO-vd-cZv">
-                                    <rect key="frame" x="1" y="1" width="168" height="283"/>
+                                    <rect key="frame" x="1" y="1" width="168" height="373"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="4JZ-Vb-D0X">
-                                            <rect key="frame" x="0.0" y="0.0" width="168" height="283"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="168" height="373"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="168" height="283"/>
+                                            <size key="minSize" width="168" height="373"/>
                                             <size key="maxSize" width="518" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -804,12 +804,43 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="79d-C9-NK8">
-                                    <rect key="frame" x="153" y="1" width="16" height="283"/>
+                                    <rect key="frame" x="153" y="1" width="16" height="373"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VdA-iZ-xpw">
+                                <rect key="frame" x="331" y="224" width="183" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Сгенерировать" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XuE-VW-BTG">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="onGenerateButtonPressed:" target="XfG-lQ-9wD" id="aTK-RA-ThH"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eRD-gq-sOJ">
+                                <rect key="frame" x="331" y="191" width="183" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Загрузить" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="btS-ga-miw">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="onLoadButtonPressed:" target="XfG-lQ-9wD" id="btD-uE-bqa"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E2f-bH-cV0">
+                                <rect key="frame" x="337" y="268" width="170" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="Количество вершин" drawsBackground="YES" id="FU8-GR-r9K">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8Z-fh-Meo">
-                                <rect key="frame" x="546" y="368" width="170" height="22"/>
+                                <rect key="frame" x="338" y="60" width="170" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="Количество потоков" drawsBackground="YES" id="YlW-1j-0nv">
                                     <font key="font" metaFont="system"/>
@@ -824,6 +855,7 @@
                         <outlet property="sourceGraphTextView" destination="4JZ-Vb-D0X" id="LuS-Id-GRt"/>
                         <outlet property="taskTextView" destination="fLn-2V-x9I" id="XEm-2a-kPY"/>
                         <outlet property="threadCountTextField" destination="L8Z-fh-Meo" id="5yK-1E-eSh"/>
+                        <outlet property="veticesCountTextField" destination="E2f-bH-cV0" id="s0R-qO-riP"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

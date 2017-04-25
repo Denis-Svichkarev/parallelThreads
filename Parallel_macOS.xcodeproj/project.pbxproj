@@ -21,6 +21,7 @@
 		252BFCD71EAE3A8200CE972F /* MetaGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252BFCCD1EAE3A8200CE972F /* MetaGraph.swift */; };
 		252BFCD81EAE3A8200CE972F /* OrientedGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252BFCCE1EAE3A8200CE972F /* OrientedGraph.swift */; };
 		252BFCD91EAE3A8200CE972F /* WeightedGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252BFCCF1EAE3A8200CE972F /* WeightedGraph.swift */; };
+		25F865311EAF546500E0DCBF /* locking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F865301EAF546500E0DCBF /* locking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		252BFCCD1EAE3A8200CE972F /* MetaGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetaGraph.swift; path = Graph/MetaGraph.swift; sourceTree = SOURCE_ROOT; };
 		252BFCCE1EAE3A8200CE972F /* OrientedGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrientedGraph.swift; path = Graph/OrientedGraph.swift; sourceTree = SOURCE_ROOT; };
 		252BFCCF1EAE3A8200CE972F /* WeightedGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeightedGraph.swift; path = Graph/WeightedGraph.swift; sourceTree = SOURCE_ROOT; };
+		25F865301EAF546500E0DCBF /* locking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = locking.swift; path = Graph/locking.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				252BFCB81EAE38AB00CE972F /* ViewController.swift */,
 				252BFCC51EAE38B100CE972F /* Graph */,
 				252BFCBA1EAE38AB00CE972F /* Assets.xcassets */,
+				25F865301EAF546500E0DCBF /* locking.swift */,
 				252BFCBC1EAE38AB00CE972F /* Main.storyboard */,
 				252BFCBF1EAE38AB00CE972F /* Info.plist */,
 			);
@@ -173,6 +176,7 @@
 			files = (
 				252BFCD11EAE3A8200CE972F /* 2labExtension.swift in Sources */,
 				252BFCB91EAE38AB00CE972F /* ViewController.swift in Sources */,
+				25F865311EAF546500E0DCBF /* locking.swift in Sources */,
 				252BFCB71EAE38AB00CE972F /* AppDelegate.swift in Sources */,
 				252BFCD51EAE3A8200CE972F /* Extensions.swift in Sources */,
 				252BFCD01EAE3A8200CE972F /* 1labExtension.swift in Sources */,

@@ -160,12 +160,98 @@ extension WeightedGraph {
             let concurrentQueue = DispatchQueue(label: "queue\(i)", attributes: .concurrent)
             concurrentQueue.async {
                 
-                self.runPrima(weightedEdge: self.weightedEdges[i], threadIndex: i + 1, completion: { edges in
+                self.runNewPrima(weightedEdge: self.weightedEdges[i], threadIndex: i + 1, theadsCount:theadsCount, completion: { edges in
                     
                     DispatchQueue.main.async {
                         completion("\(i + 1) done", i + 1, edges)
                     }
                 })
+            }
+        }
+    }
+    
+    func runNewPrima(weightedEdge: WeightedEdge, threadIndex: Int, theadsCount: Int, completion: @escaping (_ edges: [String]) -> Void) {
+        
+        var markedVerticesInThread = [Vertex]()
+        markedVerticesInThread.append(weightedEdge.vertex1)
+        
+        var minEdge: WeightedEdge?
+        var markedEdgesInThread = [String]()
+        
+        load(theadsCount: theadsCount)
+        
+        while (true) {
+            
+            var minWeight = 10000
+            
+            // 1. Find min edge
+            
+            var stableArray = [WeightedEdge]()
+            
+            let lock = NSLock()
+            
+            synchronized(lockable: lock) {
+                stableArray = NSArray(array: self.markedEdges, copyItems: true) as! [WeightedEdge]
+            }
+            
+            for v in markedVerticesInThread {
+                for e in self.weightedEdges {
+                    
+                    var existInMarked = false
+                    
+                    for e2 in stableArray {
+                        if (e.vertex1.value == e2.vertex1.value && e.vertex2.value == e2.vertex2.value)
+                            || (e.vertex2.value == e2.vertex1.value && e.vertex1.value == e2.vertex2.value) {
+                            existInMarked = true ; break
+                        }
+                    }
+                    
+                    if existInMarked { continue }
+                    
+                    if e.vertex1.value == v.value {
+                        if !self.hasVertex(vertices: markedVerticesInThread, vertex: e.vertex2) {
+                            if e.weight < minWeight { minWeight = e.weight; minEdge = e }
+                        }
+                        
+                    } else if e.vertex2.value == v.value {
+                        if !self.hasVertex(vertices: markedVerticesInThread, vertex: e.vertex1) {
+                            if e.weight < minWeight { minWeight = e.weight; minEdge = e }
+                        }
+                    }
+                }
+            }
+            
+            // 2. Add edge to tree
+            
+            if let minEdge = minEdge {
+                
+                markedEdges.append(minEdge)
+                
+                if !hasVertex(vertices: markedVerticesInThread, vertex: minEdge.vertex1) {
+                    markedVerticesInThread.append(minEdge.vertex1)
+                }
+                
+                if !hasVertex(vertices: markedVerticesInThread, vertex: minEdge.vertex2) {
+                    markedVerticesInThread.append(minEdge.vertex2)
+                }
+                
+                //print("Поток: \(threadIndex) Ребро: " + minEdge.vertex1.value + " - " + minEdge.vertex2.value)
+                markedEdgesInThread.append("\nПоток: \(threadIndex) Ребро: " + minEdge.vertex1.value + " - " + minEdge.vertex2.value)
+                
+                if !self.hasVertex(vertices: self.markedVertices, vertex: minEdge.vertex1) {
+                    self.markedVertices.append(minEdge.vertex1)
+                }
+                
+                if !self.hasVertex(vertices: self.markedVertices, vertex: minEdge.vertex2) {
+                    self.markedVertices.append(minEdge.vertex2)
+                }
+            }
+            
+            // 3. Check if all vertices were marked
+            
+            if markedVertices.count >= vertices.count {
+                completion(markedEdgesInThread)
+                break
             }
         }
     }
@@ -252,6 +338,16 @@ extension WeightedGraph {
             if markedVertices.count >= vertices.count {
                 completion(markedEdgesInThread)
                 break
+            }
+        }
+    }
+    
+    func load(theadsCount: Int) {
+        for _ in 0..<(100000 / theadsCount) {
+            for i in 0..<100 {
+                for j in 0..<100 {
+                    let a = i * j
+                }
             }
         }
     }
